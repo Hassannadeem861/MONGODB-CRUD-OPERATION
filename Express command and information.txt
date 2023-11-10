@@ -1,5 +1,5 @@
 //Express Js Server bana ka ak frame work hai
-//NPM full form : Node Package Menigar
+//NPM full form : Node Package Managar
 //Javascript ki app ko hum web/website application Khatai hai 
 //Node js ki app ko hum love sa khatai hai package
 //Express kindof ak liberary/framework hai
