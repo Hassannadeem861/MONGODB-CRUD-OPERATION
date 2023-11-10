@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+    <title>Weather App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+    <!-- title icon -->
+    <!-- <link rel="icon" type="image/x-icon" href=""> -->
+    <!-- icons cdn -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"></link> -->
+    <!-- font cdn -->
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600;700;800;900&display=swap" rel="stylesheet"> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&display=swap" rel="stylesheet"> -->
+    <!-- css -->
+    <!-- <link rel="stylesheet" type="text/css" href="style.css"></link> -->
+    <!-- bootstrap -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"> -->
+    <!-- tailwind css -->
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+</head>
+
+<!-- <body> -->
+
+    <style>
+
+        /* body{
+            width: 100%;
+            height: 100vh;
+            background: rgba(0,0,0,0.4) url(./ice\ background.jpeg) center center fixed;
+            background: url(./ice\ background.jpeg);
+            background: url(https://source.unsplash.com/1600x900/?);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-blend-mode: darken;
+        } */
+
+         .heading{
+            text-align: center;
+            font-weight: 500;
+            font-size: 1.2em;
+            font-family: serif;
+        }
+            
+        .form{
+           
+            box-shadow: 0px 0px 10px black;
+            padding: 0.5em;
+            width: 425px;
+            height: 345px;
+            margin-left: 0.5em;
+            border-radius: 15px;
+        }
+       
+
+        .label1{
+            font-size: 2.5em;
+        }
+       #posttitle{
+        width: 23em;
+        padding: 1em;
+        /* border-radius: 15px; */
+        margin: 0.5em;
+        font-size: 1em;
+     }
+
+     /* .label2{
+        font-size: 2.5em;
+     } */
+
+     .postText{
+        margin-left: 0.5em;
+        padding: 5em;
+        width: 268px;
+        /* border-radius: 10px; */
+    }
+
+    #btn{
+        margin: 0.5em;
+        /* margin-left: 0.9em; */
+        padding: 1em;
+        cursor: pointer;
+        background-color: black;
+        color: white;
+
+    }
+
+    .btn:hover{
+      color: aqua;
+    }
+
+    .postCard{
+     width: 500px;
+     height: 200px;
+     box-shadow: 0px 0px 10px black;
+     padding: 1em;
+     margin: 0.5em;
+     border-radius: 15px;
+    }
+
+    .img1{
+        width: 50px;
+        height: 50px;
+        border-radius: 20px;
+    }
+    
+
+     
+       
+    </style>
+</head>
+
+<body onload="getAllPost()">
+
+  
+
+
+    <div class="heading">
+        <h1>MY POST CRUD APP</h1>
+    </div>
+
+    <form id="input" class="form" onsubmit="createPost(event)">
+
+        <h2>CREATE A POST....</h2>
+
+        <!-- <label for="posttitle" class="label1">title :</label> -->
+        <input type="text" id="posttitle" name="posttitle" placeholder="Enter Your title" required>
+        <br>
+        <!-- <label for="postText" class="label2">Text :</label> -->
+        <!-- <textarea name="postText" id="postText" class="postText" cols="30" rows="10" required></textarea> -->
+        <input type="text" id="postText" class="postText" name="postText"required>
+        <br>
+        <button type="submit" id="btn" class="btn"><i class="bi bi-search"></i>SUBMIT POST</button>
+      
+    </form>
+   <br>
+   <br>
+
+   <div id="result" class="result">Post Created</div>
+   <br>
+   <br>
+   <div id="posts" class="result"></div>
+
+   
+
+
+                       <!-- Javascript Part -->
+                       
+
+    <!-- // Axious Link -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script type="module">
+
+      window.createPost = (e) => {
+
+            e.preventDefault()
+            let posttitle = document.querySelector("#posttitle").value
+            let postText = document.querySelector("#postText").value
+            console.log("posttitle: ", posttitle)
+            console.log("postText: ", postText)
+
+            //baseUrl/api/v1/post
+            //confused
+            axios.post(`/api/v1/post`, {
+              title: posttitle,
+              text: postText
+            })
+                .then(function (response) {
+                    
+                    console.log(response.data);
+                    // Swal.fire({
+                    //     title: 'Successfully Data',
+                    //     showDenyButton: true,
+                    //     showCancelButton: true,
+                    //     confirmButtonText: 'Save',
+                    //     denyButtonText: `Don't save`,
+                    // }).then((result) => {
+                    //     /* Read more about isConfirmed, isDenied below */
+                    //     if (result.isConfirmed) {
+                    //         Swal.fire(`response.data`)
+                    //     } else if (result.isDenied) {
+
+                    //         Swal.fire('Changes are not saved', '', 'info')
+                    //     }
+                    // })
+
+                    document.querySelector("#result").innerHTML = response.data
+                    getAllPost()
+
+                })
+                .catch(function (error) {
+                   
+                    console.log(error.data);
+                    Swal.fire({
+                        title: 'Error',
+                        showDenyButton: true,
+                        showCancelButton: true,
+                        confirmButtonText: 'Save',
+                        denyButtonText: `Don't save`,
+                    }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                            Swal.fire("Error is posting submission")
+                        } else if (result.isDenied) {
+                            Swal.fire('Changes are not saved', '', 'info')
+                        }
+                    })
+
+                    // document.querySelector("#result").innerHTML = "Error is getting Weather Data"
+                })
+
+        };
+
+
+
+
+      window.getAllPost = (e) => {
+
+            //baseUrl/api/v1/post
+            //confused
+            axios.get(`/api/v1/posts`)
+                .then(function (response) {
+                    
+                    console.log(response.data); //[...] 
+
+                    let postsHtml = ``
+
+            response.data.map((eachPost) => {
+            postsHtml +=
+                `<div id='card-${eachPost._id}' class="postCard">
+                    <h3>${eachPost.title}</h3>
+                    <p> ${new Date(eachPost.createdOn)} </p>
+                    <p> ${eachPost.text} </p>
+                    <button onclick="delPost('${eachPost._id}')">Delete</button>
+                    <button onclick="editPost('${eachPost._id}', ${eachPost.title}, ${eachPost.text})">Edit</button>
+                </div> 
+                <br />`
+            })
+
+
+          document.querySelector("#posts").innerHTML = postsHtml
+        })
+                .catch(function (error) {
+                   
+                    console.log(error.data);
+                    Swal.fire({
+                        title: 'Error',
+                        showDenyButton: true,
+                        showCancelButton: true,
+                        confirmButtonText: 'Save',
+                        denyButtonText: `Don't save`,
+                    }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                            Swal.fire("Error is posting submission")
+                        } else if (result.isDenied) {
+                            Swal.fire('Changes are not saved', '', 'info')
+                        }
+                    })
+
+                    // document.querySelector("#result").innerHTML = "Error is getting Weather Data"
+                })
+
+        };
+
+//         window.editPost = (postId, title, text) => {
+
+//       console.log("editPost: ", postId);
+
+//       document.querySelector(`#card-${postId}`).innerHTML =
+//     `<form onsubmit="savePost('${postId}')">
+//         title: <input type='text' value='${title}' id='title-${postId}' />
+//         <br/>
+//         text: <input type='text' value='${text}' id='text-${postId}' />
+//         <br/>
+//         <button>Save</button>
+
+//     </form>`
+// }
+// window.savePost = (postId) => {
+// const updatedtitle = document.querySelector(`#title-${postId}`).value;
+// const updatedText = document.querySelector(`#text-${postId}`).value;
+
+// axios.put(`/api/v1/post/${postId}`, {
+//     title: updatedtitle,
+//     text: updatedText
+// })
+//     .then(function (response) {
+//         console.log(response.data);
+//     })
+//     .catch(function (error) {
+//         // handle error
+//         console.log(error.data);
+//         document.querySelector("#result").innerHTML = "error in post submission"
+//     })
+
+
+
+
+window.editPost = (postId, title, text) => {
+
+console.log("delete: ", postId);
+
+document.querySelector(`#card-${postId}`).innerHTML =
+    `<form onsubmit="savePost('${postId}')">
+        title: <input type='text' value='${title}' id='title-${postId}' />
+        <br/>
+        text: <input type='text' value='${text}' id='text-${postId}' />
+        <br/>
+        <button>Save</button>
+
+    </form>`
+}
+window.savePost = (postId) => {
+const updatedTitle = document.querySelector(`#title-${postId}`).value;
+const updatedText = document.querySelector(`#text-${postId}`).value;
+
+axios.put(`/api/v1/post/${postId}`, {
+    title: updatedTitle,
+    text: updatedText
+})
+    .then(function (response) {
+        console.log(response.data);
+    })
+    .catch(function (error) {
+        // handle error
+        console.log(error.data);
+        document.querySelector("#result").innerHTML = "error in post submission"
+    })
+
+
+
+
+    // const updatetitle = document.querySelector(`#title-${postId}`).value
+    // const updateText = document.querySelector(`#text-${postId}`).value
+
+    //    //baseUrl/api/v1/post
+    //         //confused
+    //         axios.put(`/api/v1/post/${postId}`, {
+    //           title: updatetitle,
+    //           text: updateText
+    //         })
+    //             .then(function (response) {
+    //             console.log(response.data);
+    //             // document.querySelector("#result").innerHTML = response.data
+    //                 // getAllPost()
+
+    //             })
+    //             .catch(function (error) {
+    //             console.log(error.data);
+    //             })
+
+
+} 
+                   
+                    
+
+
+    window.delPost = (postId) => {
+    console.log('postId: ', postId); 
+
+//baseUrl/api/v1/post
+//confused
+axios.delete(`/api/v1/post/${postId}`)
+    .then(function (response) {
+    console.log(response.data); //[...] 
+    getAllPost()
+    Swal.fire({
+  position: 'top-end',
+  icon: 'success',
+  title: 'Delete Post',
+  showConfirmButton: false,
+  timer: 1500
+})
+        
+    })
+    .catch(function (error) {
+       
+        console.log(error.data);
+        Swal.fire({
+            title: 'Error',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Save',
+            denyButtonText: `Don't save`,
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                Swal.fire("Error is posting submission")
+            } else if (result.isDenied) {
+                Swal.fire('Changes are not saved', '', 'info')
+            }
+        })
+    })
+
+};
+
+</script>
+
+ <!-- axios -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.js"></script> -->
+    <!-- moment js -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script> -->
+    <!-- sweet alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- bootstrap -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script> -->
+    <!-- javascript -->
+    <!-- <script src="./main.js"></script> -->
+</body>
+
+</html>
+
+
+
+
+
+

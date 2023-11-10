@@ -1,0 +1,14 @@
+                                                                             
+                                                                      HTTP response status codes
+
+"400 Bad Request" ka matlab hai ke server aapki darkhwast ko samajh nahi paaya ya phir usme kuch ghalat hai, jaise darkhwast ka tareeqa theek nahi hai ya darkhwast ka message sahi nahi hai, ya phir darkhwast ka rasta galat hai.
+
+"401 Unauthorized" ka matlab hai ke HTTP standard mein to likha hai ke "unauthorized" hai, magar matlaban yeh jawab "unauthenticated" hai. Yani client ko apni tasdeeq deni hogi takay woh darkhwast ka jawab hasil kar sake.
+
+"402 Payment Required" yeh code mustaqbil mein istemal ke liye rakha gaya hai. Is code ko pehlay digital payment systems mein istemal karne ka irada tha, lekin yeh code bohot kam istemal hota hai aur koi standard agreement nahi hai.
+
+"403 Forbidden" ka matlab hai ke client ko content tak rasai nahi hai; yani uski ijaazat nahi hai, is liye server ne darkhwast karne wale ko maanayi nahi di. 401 Unauthorized ke mukhfiq se, server ko client ka pata hota hai.
+
+"404 Not Found" ka matlab hai ke server darkhwast ki gayi cheez ko nahi mil saki. Web browser mein yeh matlab hota hai ke URL pehchanayi nahi gayi. API mein bhi yeh matlab ho sakta hai ke endpoint to theek hai lekin resource khud maujood nahi hai. Server yeh jawab 403 Forbidden ke bajaye bhi bhej sakta hai takay ghair-iqrari client se kisi resource ki maujoodgi chhup sake. Is code ka istemal web par amuman hota hai.
+
+"405 Method Not Allowed" ka matlab hai ke server ko darkhwast ka tareeqa to maloom hai lekin maqsad wale resource ko support nahi karta. Misal ke taur par, API DELETE darkhwast ko rad kar sakti hai resource ko hatane ke liye.

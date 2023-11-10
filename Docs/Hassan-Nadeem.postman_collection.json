@@ -1,0 +1,122 @@
+{
+	"info": {
+		"_postman_id": "cdc588a2-308c-40eb-99cf-ce4c7f41d7aa",
+		"name": "Hassan-Nadeem",
+		"description": "This is api documenation for my server",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28559401"
+	},
+	"item": [
+		{
+			"name": "v1",
+			"item": []
+		},
+		{
+			"name": "Auth",
+			"item": []
+		},
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "Create-Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 98148,\r\n    \"title\": \"abc title\",\r\n     \"text\": \"abc new text\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/v1/post",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-All-Post",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 98148,\r\n    \"title\": \"abc title\",\r\n    \"text\": \"abc text\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/v1/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-A-Post-With-Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 98148,\r\n    \"title\": \"abc title\",\r\n    \"text\": \"abc text\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/v1/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "This api is create for crud operation in post"
+		},
+		{
+			"name": "v2",
+			"item": []
+		}
+	]
+}
